@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Bioinf_theoretical.iml" filepath="$PROJECT_DIR$/.idea/Bioinf_theoretical.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bioinf_project/.idea/bioinf_project.iml" filepath="$PROJECT_DIR$/../bioinf_project/.idea/bioinf_project.iml" />
     </modules>
   </component>
 </project>
