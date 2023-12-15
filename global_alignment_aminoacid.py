@@ -5,16 +5,16 @@ def global_alignment_aminoacids(s, t):
     dp = np.zeros((len(s) + 1, len(t) + 1))
     
     for i in range(1, len(s) + 1):
-        dp[i][0] = dp[i-1][0] - 5
+        dp[i][0] = dp[i-1][0] - 1
     for j in range(1, len(t) + 1):
-        dp[0][j] = dp[0][j-1] - 5
+        dp[0][j] = dp[0][j-1] - 1
     
     for i in range(1, len(s) + 1):
         for j in range(1, len(t) + 1):
             match = dp[i-1][j-1] + blosum62(s[i-1], t[j-1])
-            delete = dp[i-1][j] - 5
-            insert = dp[i][j-1] - 5
-            dp[i][j] = max(match, delete, insert)
+            gap = dp[i-1][j] - 1
+            mismatch = dp[i][j-1] - 2
+            dp[i][j] = max(match, delete, mismatch)
     
     align_s = ""
     align_t = ""
@@ -25,7 +25,7 @@ def global_alignment_aminoacids(s, t):
             align_t = t[j-1] + align_t
             i -= 1
             j -= 1
-        elif i > 0 and dp[i][j] == dp[i-1][j] - 5:
+        elif i > 0 and dp[i][j] == dp[i-1][j] - 2:
             align_s = s[i-1] + align_s
             align_t = "-" + align_t
             i -= 1
