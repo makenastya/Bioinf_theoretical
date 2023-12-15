@@ -14,7 +14,7 @@ def global_alignment_aminoacids(s, t):
             match = dp[i-1][j-1] + blosum62(s[i-1], t[j-1])
             gap = dp[i-1][j] - 1
             mismatch = dp[i][j-1] - 2
-            dp[i][j] = max(match, delete, mismatch)
+            dp[i][j] = max(match, gap, mismatch)
     
     align_s = ""
     align_t = ""
